@@ -8,7 +8,7 @@ const defaultHost = 'localhost';
 // types (browser, server, static) are catered for
 const defaultPorts = {
   production: {
-    server: 4000,
+    server: process.env.PORT || 4000,
   },
   development: {
     browser: 8080,
