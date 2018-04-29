@@ -73,6 +73,7 @@ const switchStyle = {
   boxSizing: 'borderBox',
 };
 
+
 export default () => (
   <MuiThemeProvider muiTheme={getMuiTheme(CustomTheme)}>
     <div style={stylePage}>

@@ -19,10 +19,10 @@ import PropTypes from 'prop-types';
 /* ReactQL */
 
 // NotFound 404 handler for unknown routes
-import { NotFound } from 'kit/lib/routing';
+import { NotFound } from '../routing';
 
-import HomeComponent from 'src/components/main/home';
-import PrinterProject1Component from 'src/components/projects/printerProject1';
+import HomeComponent from '../components/main/home';
+import PrinterProject1Component from '../components/projects/printerProject1';
 
 // ----------------------
 

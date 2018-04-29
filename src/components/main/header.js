@@ -18,8 +18,8 @@ import PropTypes from 'prop-types';
 // HOC/decorator to listen to Redux store state
 import { connect } from 'react-redux';
 
-import PicMe from 'src/assets/avatar-me-croped.jpg';
-import OnlinePresenceIcons from 'src/components/main/onlinePresenceIcons';
+import PicMe from '../../assets/avatar-me-croped.jpg';
+import OnlinePresenceIcons from '../../components/main/onlinePresenceIcons';
 
 // ----------------------
 
@@ -45,25 +45,13 @@ const stylePage = {
 // @connect accepts a function that takes the full Redux state, and then
 // returns the portion of state that our component cares about.  In this example,
 // we're listening to `state.counter`, which we can show inside the component
-@connect(state => ({ navigater: state.navigater }))
 export default class AppHeader extends React.PureComponent {
-  static propTypes = {
-    navigater: PropTypes.shape({
-      openSideNavigator: PropTypes.bool.isRequired,
-    }),
-  };
-
-  static defaultProps = {
-    navigater: {
-      openSideNavigator: false,
-    },
-  };
-
   constructor() {
     super();
     this.state = {
       appTitle: 'Home',
       open: false,
+      openSideNavigator: false,
     };
   }
 
@@ -72,36 +60,33 @@ export default class AppHeader extends React.PureComponent {
   // to `this`, which is why we can use @connect's `.dispatch()` function that's
   // passed in as a prop
   triggerNavSide = navPlace => {
+    console.log("stuff", navPlace);
     if (navPlace !== null && typeof navPlace === 'string') {
-      this.setState({
-        appTitle: navPlace,
-      });
+      this.setState({ appTitle: navPlace });
     }
-    this.props.dispatch({
-      type: 'NAVIGATE_SIDE',
+    this.setState((prevState) => {
+      return {
+        openSideNavigator: !prevState.openSideNavigator
+      }
     });
-  };
 
-  handleNestedListToggle = item => {
-    this.setState({
-      open: item.state.open,
-    });
+    console.log(this.state);
   };
 
   render() {
-    const { openSideNavigator } = this.props.navigater;
     return (
       <div style={stylePage}>
         <AppBar
           title={this.state.appTitle}
           iconClassNameRight="icon-navigation-expand-more"
           onLeftIconButtonTouchTap={this.triggerNavSide}
+          onLeftIconButtonClick={this.triggerNavSide}
           iconElementRight={<OnlinePresenceIcons />}
           style={headerStyle} />
         <Drawer
           title="Matthew Pyne"
           docked={false}
-          open={openSideNavigator}
+          open={this.state.openSideNavigator}
           onRequestChange={this.triggerNavSide}>
           <List>
             <ListItem
