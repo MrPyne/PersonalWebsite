@@ -56,9 +56,7 @@ export default () => (
     </div>
     <div style={styleBody}>
       <p>
-          What I think is important to know about
-          me is I like to learn and build stuff. I spend most of my spare time
-          building something or programming.
+          
         <br />
         <br />
           My education is in electrical and computer engineering, recieving a BENG degree from
