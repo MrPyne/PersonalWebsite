@@ -34,7 +34,7 @@ class Projects extends Component {
             <CardTitle class="tracker-card-title" >Tracker</CardTitle>
             <CardText>
               My friend and business partner created Tracker Inventory Systems.
-              Our sweet of software includes a node.js GraphQL server AWS, PostgreSQL database 
+              Our suite of software includes a node.js GraphQL server AWS, PostgreSQL database 
               on AWS, responsive Reactjs Apollo web client, and a Android client.
             </CardText>
             <CardActions border>
